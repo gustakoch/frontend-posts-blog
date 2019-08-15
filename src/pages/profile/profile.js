@@ -28,7 +28,7 @@ export default function Profile() {
                     <h2>Seja bem vindo</h2>
                 </div>
                 <div className="boxes">
-                    
+
                 </div>
             </div>
 

@@ -14,13 +14,22 @@ export default function Register() {
     async function handleSubmit(e) {
         e.preventDefault();
 
+        if (name === '' || email === '' || password === '') {
+          return swal({
+            title: "Oops.. Houve um erro!",
+            text: 'Por favor, preencha todos os campos solicitados!',
+            icon: "error",
+            button: "Fechar",
+          });
+        }
+
         await api.post('/usuario/cadastro',{ name, email, password })
             .then(response => {
                 swal({
-                    title: "Cadastro realizado com sucesso!",
-                    text: `Seja bem vindo, ${response.data.data.name}`,
-                    icon: "success",
-                    button: "Fechar",
+                  title: "Cadastro realizado com sucesso!",
+                  text: `Seja bem vindo, ${response.data.data.name}`,
+                  icon: "success",
+                  button: "Fechar",
                 });
             })
             .catch(error => {
